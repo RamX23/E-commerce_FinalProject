@@ -10,7 +10,7 @@ route('/')
 .get(authenticate,authorizeadmin,getAllOrders)
 
 
-router.route('/myorders').get(authenticate,getUserOrders)
+router.route('/mine').get(authenticate,getUserOrders)
 router.route('/total-orders').get(countTotalOrders)
 router.route('/total-sales').get(getTotalSales)
 router.route('/sales-bydate').get(calculateTotalSalesByDate)

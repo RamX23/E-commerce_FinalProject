@@ -144,7 +144,7 @@ const logoutHandler=async()=>{
             </Link>
           </li>
             <li>
-              <Link to={'user-orders'} className="block px-4 py-2 hover:bg-gray-100">
+              <Link to={'UserOrder/mine'} className="block px-4 py-2 hover:bg-gray-100">
               Orders
               </Link>
             </li>

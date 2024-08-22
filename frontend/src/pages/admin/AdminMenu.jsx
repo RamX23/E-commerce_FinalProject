@@ -62,7 +62,7 @@ const AdminMenu = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className='list-item py-2 px-3 mb-3 bg-black hover:bg-[#371515] rounded-sm' to="/admin/order list" style={({isActive})=>({
+                    <NavLink className='list-item py-2 px-3 mb-3 bg-black hover:bg-[#371515] rounded-sm' to="/admin/OrderList" style={({isActive})=>({
                    color:isActive ? 'greenyellow' : 'white'
                     })}>
                         Order List
