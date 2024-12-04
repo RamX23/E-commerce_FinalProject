@@ -14,14 +14,10 @@ const Port=process.env.Port || 5000;
 
 connctdb(); 
 
-const corsOptions = {
-    origin: 'https://e-commerce-frontend1-t8fy.onrender.com',  // Replace with your frontend domain
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-  };
 
+
+app.use(cors());
 const app=express();
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
