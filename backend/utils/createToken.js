@@ -15,7 +15,7 @@ const generateToken = (res, userId) => {
   // Set the token in a secure, httpOnly cookie
   res.cookie('jwt', token, {
     httpOnly: true, 
-    secure: isSecure, // Only true if in production, which requires HTTPS
+    secure: true, // Only true if in production, which requires HTTPS
     sameSite: 'None'
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
   });
