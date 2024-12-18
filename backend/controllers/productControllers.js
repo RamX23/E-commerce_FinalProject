@@ -132,7 +132,9 @@ const fetchProductById=asyncHandler(async(req,res)=>{
         .populate("category")
         .limit(12)
         .sort({ createAt: -1 });
-  
+      console.log('NODE_ENV:', process.env.NODE_ENV);
+      console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
       res.json(products);
     } catch (error) {
       console.error(error);
