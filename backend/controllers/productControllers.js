@@ -102,6 +102,8 @@ const fetchProducts=asyncHandler(async(req,res)=>{
   pages:Math.ceil(count/pageSize),
   hasMore:false,
  });
+  console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
    }catch(err){
     res.status(400).json({err:"error from server side while fetching products"});
