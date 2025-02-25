@@ -1,44 +1,55 @@
 import express from 'express';
 import multer from 'multer';
-import cloudinary from '../utils/cloudinary.js';  
-import streamifier from 'streamifier'; 
+import cloudinary from '../config/cloudinary.js';  
+import streamifier from 'streamifier';
 
 const router = express.Router();
 
+// Configure multer for in-memory storage and file size limit
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 }, 
+});
 
-const storage = multer.memoryStorage(); 
-const upload = multer({ storage });
+const uploadToCloudinary = (buffer) => {
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        resource_type: 'image', 
+        folder: 'uploads', 
+        format: 'webp', 
+        quality: 'auto',
+      },
+      (error, result) => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(result.secure_url);
+      }
+    );
 
-router.post('/', upload.single('image'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send({ message: 'No image file provided' });
-  }
+    streamifier.createReadStream(buffer).pipe(uploadStream);
+  });
+};
 
-const uploadStream = cloudinary.uploader.upload_stream(
-  {
-    resource_type: "auto",
-    eager: [
-      { width: 500, height: 500, crop: "fill" }, 
-      { width: 1000, height: 1000, crop: "limit" },
-    ],
-    folder: "products", 
-    quality: "auto", 
-    fetch_format: "auto", 
-  },
-  (error, result) => {
-    if (error) {
-      return res.status(500).send({ message: "Error uploading to Cloudinary", error });
+// Route for image upload
+router.post('/', upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image file provided' });
     }
 
-    res.status(200).send({
-      message: "Image uploaded successfully",
-      image: result.secure_url, 
+    // Upload image to Cloudinary
+    const imageUrl = await uploadToCloudinary(req.file.buffer);
+
+    res.status(200).json({
+      message: 'Image uploaded successfully',
+      image: imageUrl,
     });
+  } catch (error) {
+    console.error('Cloudinary Upload Error:', error);
+    res.status(500).json({ message: 'Error uploading to Cloudinary', error });
   }
-);
-
-
-  streamifier.createReadStream(req.file.buffer).pipe(uploadStream);
 });
 
 export default router;
