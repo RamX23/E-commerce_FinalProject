@@ -1,60 +1,62 @@
 
-# Keeper App
+# E-commerce App
 
 ## Overview
 
-Keeper App is a full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js). This application allows users to create, manage, and delete notes, similar to the functionality of Google Keep. The app features a simple and intuitive user interface that makes it easy to keep track of notes.
+This E-Commerce Application is a full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js). It provides a seamless online shopping experience where users can browse products, add items to their cart, make purchases, and manage their orders.
 
 ## Features
 
-- **Create Notes:** Users can add new notes with a title and content.
-- **View Notes:** All saved notes are displayed on the main page.
-- **Delete Notes:** Users can delete notes they no longer need.
-- **Responsive Design:** The app is responsive and works well on both desktop and mobile devices.
+- **User Authentication:** Secure login and registration using JWT authentication.  
+- **Product Management:** View, add, update, and delete products (admin access).  
+- **Shopping Cart:** Add, remove, and update items in the cart before checkout.  
+- **Order Processing:** Users can place orders and track order status.  
+- **Payment Integration:** Secure payment gateway for hassle-free transactions.  
+- **Responsive UI:** Fully optimized for mobile and desktop devices.  
 
-## Technology Stack
+## Tech Stack
 
-### Frontend
+- **Frontend:** React.js, Redux (for state management), Bootstrap  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB (Mongoose for object modeling)  
+- **Authentication:** JSON Web Token (JWT)  
+- **Payment Gateway:** Integrated Paypal payment gateway.
 
-- **React:** A JavaScript library for building user interfaces. React is used to create the dynamic and interactive user interface of the Keeper App.
-- **Axios:** A promise-based HTTP client for making API requests from the frontend to the backend.
-
-### Backend
-
-- **Node.js:** A JavaScript runtime built on Chrome's V8 engine. Node.js is used to create the backend server that handles API requests.
-- **Express:** A minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications.
-- **MongoDB Atlas:** A cloud-based NoSQL database to store notes data. MongoDB is used to handle data persistence in the Keeper App.
-- **Mongoose:** An ODM (Object Data Modeling) library for MongoDB and Node.js that provides a straightforward, schema-based solution to model your application data.
 
 ## Project Structure
+```
 
-```
-keeper-app/
-│
-├── Backend/
-│   
-│   │  
-│   ├── routes/
-|   |   ├── models/
-|   |   |   └── Note.js           # Mongoose schema for notes
-│   │   └── notes.js              # API routes for CRUD operations on notes
-│   ├── server.js                 # Entry point for the backend server
-│   └── .env                      # Environment variables (e.g., MongoDB URI)(Please Add your own file)
-│
-├── Frontend/
-│   ├── public/
+E-commerce_FinalProject/
+│── client/                     # Frontend (React.js)
+│   ├── public/                  # Static assets (index.html, favicon, etc.)
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── Header.jsx        # Header component
-│   │   │   ├── Footer.jsx        # Footer component
-│   │   │   ├── Note.jsx          # Note component
-│   │   │   └── CreateArea.jsx    # Form to create new notes
-│   │   └── App.js                # Main React component
-|   |   └── Index.js              # Main Index File
-│   └──package.json               # Frontend dependencies and scripts
-│                        
-└── README.md                     # Project documentation
+│   │   ├── assets/              # Images, icons, and styles
+│   │   ├── components/          # Reusable UI components (Navbar, Footer, etc.)
+│   │   ├── pages/               # Page components (Home, Product, Cart, etc.)
+│   │   ├── context/             # Context API providers
+│   │   ├── hooks/               # Custom hooks
+│   │   ├── redux/               # Redux store, slices
+│   │   ├── services/            # API calls
+│   │   ├── App.js               # Main App component
+│   │   ├── index.js             # Entry point for React app
+│   ├── package.json             # Frontend dependencies
+│   ├── .env                     # Environment variables for frontend
+│
+│── server/                     # Backend (Node.js, Express)
+│   ├── config/                  # Database and config files
+│   ├── controllers/             # Controllers for handling logic
+│   ├── models/                  # Mongoose models (User, Product, Order, etc.)
+│   ├── routes/                  # Express routes (Auth, Products, Orders)
+│   ├── middleware/              # Authentication, error handling
+│   ├── utils/                   # Helper functions
+│   ├── server.js                # Main entry point for backend
+│   ├── package.json             # Backend dependencies
+│   ├── .env                     # Environment variables for backend
+│
+│── .gitignore                   # Ignore unnecessary files
+│── README.md                    # Project documentation
 ```
+
 
 ## Setup Instructions
 
@@ -67,8 +69,8 @@ keeper-app/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Rushabh178/KeeperApp.git
-cd KeeperApp
+git clone https://github.com/RamX23/E-commerece_FinalProject
+cd E-commerce_FinalProject
 ```
 
 ### Backend Setup
@@ -95,7 +97,7 @@ cd KeeperApp
 4. Start the backend server:
 
    ```bash
-   npm start
+   node index.js
    ```
 
    The server will be running at `http://localhost:5000`.
@@ -123,7 +125,7 @@ cd KeeperApp
 4. Start the frontend development server:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
    The app will be running at `http://localhost:3000`.
@@ -136,15 +138,12 @@ cd KeeperApp
 
 ## Deployment
 
-For deploying the Keeper App, you can use services like Heroku for the backend and Netlify or Vercel for the frontend. Make sure to configure environment variables accordingly.
+## 🌍 Deployment
 
-## Future Improvements
+The application is **deployed on Render**.
 
-- **User Authentication:** Implement user authentication to allow users to save notes under their accounts.
-- **Search Functionality:** Add a search bar to allow users to filter notes by title or content.
-- **Tags and Categories:** Allow users to tag notes and categorize them for better organization.
-- **Rich Text Editor:** Replace the basic text input with a rich text editor for more advanced note formatting.
-
+- **Frontend:** [Live URL](#(https://e-commerce-frontend1-t8fy.onrender.com)  
+- **Backend:** [[API URL](#(https://e-commerce-finalproject1.onrender.com)
 
 ## Contributing
 
@@ -152,7 +151,7 @@ Contributions are welcome! Please fork this repository, make your changes, and s
 
 ## Contact
 
-For any questions or feedback, feel free to reach out at [shrishrimalrushabh@gmail.com](shrishrimalrushabh@gmail.com).
+For any questions or feedback, feel free to reach out at [ramg8305@gmail.com](ramg8305@gmail.com).
 
 ---
 
